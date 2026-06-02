@@ -8,7 +8,7 @@
 
 AI Gesture Translator is a web application that uses natural language processing and sentiment analysis to interpret and categorize gesture descriptions. It provides visual analytics through interactive charts and real-time sentiment scoring.
 
-![App Preview](https://via.placeholder.com/800x400?text=AI+Gesture+Translator+Preview)
+![App Logo](favicon.svg)
 
 ## Features
 
