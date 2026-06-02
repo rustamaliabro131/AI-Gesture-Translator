@@ -1,0 +1,123 @@
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  auto-merge-dependabot:
+    runs-on: ubuntu-latest
+    # Only run for Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    
+    steps:
+      - name: Enable auto-merge for Dependabot PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Check if PR is mergeable and has no conflicts
+            const { data: pr } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: prNumber
+            });
+
+            if (pr.mergeable === true && pr.state === 'open') {
+              // Enable auto-merge with squash merge
+              try {
+                await github.rest.pulls.enableAutoMerge({
+                  owner,
+                  repo,
+                  pull_number: prNumber,
+                  merge_method: 'squash',
+                  auto_delete_branch: true
+                });
+                console.log(`Auto-merge enabled for PR #${prNumber}`);
+              } catch (error) {
+                // If auto-merge is already enabled or not available, that's okay
+                console.log(`Auto-merge setup: ${error.message}`);
+              }
+            } else {
+              console.log(`PR #${prNumber} is not mergeable (mergeable: ${pr.mergeable}, state: ${pr.state})`);
+            }
+
+  merge-when-checks-pass:
+    runs-on: ubuntu-latest
+    needs: auto-merge-dependabot
+    if: github.actor == 'dependabot[bot]'
+    
+    steps:
+      - name: Wait for required checks and merge
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Get all required status checks for the base branch
+            const { data: branch } = await github.rest.repos.getBranch({
+              owner,
+              repo,
+              branch: context.payload.pull_request.base.ref
+            });
+
+            // Get the combined status for this PR
+            const { data: combinedStatus } = await github.rest.repos.getCombinedStatusForRef({
+              owner,
+              repo,
+              ref: context.payload.pull_request.head.ref
+            });
+
+            console.log(`PR #${prNumber} status: ${combinedStatus.state}`);
+
+            // If all checks passed, try to merge
+            if (combinedStatus.state === 'success') {
+              const { data: pr } = await github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: prNumber
+              });
+
+              if (pr.mergeable === true && pr.state === 'open') {
+                await github.rest.pulls.merge({
+                  owner,
+                  repo,
+                  pull_number: prNumber,
+                  merge_method: 'squash',
+                  commit_title: `Merge PR #${prNumber} from dependabot`
+                });
+                console.log(`Successfully merged PR #${prNumber}`);
+              }
+            } else if (combinedStatus.state === 'failure') {
+              console.log(`PR #${prNumber} has failing checks, will not merge`);
+            }
+
+  # Helper job to show PR info
+  pr-info:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Print Dependabot PR info
+        run: |
+          echo "Dependabot PR Details:"
+          echo "PR Number: ${{ github.event.pull_request.number }}"
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          echo "Base Branch: ${{ github.event.pull_request.base.ref }}"
+          echo "Head Branch: ${{ github.event.pull_request.head.ref }}"
