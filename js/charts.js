@@ -101,7 +101,18 @@ class ChartManager {
                         min: -1,
                         max: 1,
                         grid: {
-                            color: '#21262d',
+                            color: (context) => {
+                                if (context.tick.value === 0) {
+                                    return '#484f58'; // Highlight zero line
+                                }
+                                return '#21262d';
+                            },
+                            lineWidth: (context) => {
+                                if (context.tick.value === 0) {
+                                    return 2;
+                                }
+                                return 1;
+                            },
                             drawBorder: false
                         },
                         ticks: {
@@ -111,7 +122,8 @@ class ChartManager {
                     },
                     y: {
                         grid: {
-                            display: false
+                            color: '#21262d',
+                            drawBorder: false
                         },
                         ticks: {
                             font: { size: 10 }
@@ -171,19 +183,35 @@ class ChartManager {
                     x: {
                         grid: {
                             color: '#21262d',
-                            drawBorder: false
+                            drawBorder: true,
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            color: '#8b949e'
                         }
                     },
                     y: {
                         min: -1,
                         max: 1,
                         grid: {
-                            color: '#21262d',
-                            drawBorder: false
+                            color: (context) => {
+                                if (context.tick.value === 0) {
+                                    return '#484f58'; // Highlight zero line
+                                }
+                                return '#21262d';
+                            },
+                            lineWidth: (context) => {
+                                if (context.tick.value === 0) {
+                                    return 2;
+                                }
+                                return 1;
+                            },
+                            drawBorder: true
                         },
                         ticks: {
                             stepSize: 0.5,
-                            callback: (value) => value.toFixed(1)
+                            callback: (value) => value.toFixed(1),
+                            color: '#8b949e'
                         }
                     }
                 },
