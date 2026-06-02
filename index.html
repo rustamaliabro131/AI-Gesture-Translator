@@ -37,11 +37,11 @@
         <div class="app-logo-section">
             <svg class="app-logo" viewBox="0 0 120 120" fill="none">
                 <defs>
-                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id="appLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#58a6ff"/>
                         <stop offset="100%" style="stop-color:#3fb950"/>
                     </linearGradient>
-                    <filter id="glow">
+                    <filter id="appGlow">
                         <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
@@ -49,10 +49,10 @@
                         </feMerge>
                     </filter>
                 </defs>
-                <circle cx="60" cy="60" r="55" stroke="url(#logoGrad)" stroke-width="4" filter="url(#glow)"/>
+                <circle cx="60" cy="60" r="55" stroke="url(#appLogoGrad)" stroke-width="4" filter="url(#appGlow)"/>
                 <circle cx="60" cy="60" r="45" stroke="#58a6ff" stroke-width="2" stroke-dasharray="8 4"/>
-                <path d="M35 60 Q60 35 85 60 Q60 85 35 60" fill="none" stroke="url(#logoGrad)" stroke-width="3"/>
-                <circle cx="60" cy="60" r="12" fill="#3fb950" filter="url(#glow)"/>
+                <path d="M35 60 Q60 35 85 60 Q60 85 35 60" fill="none" stroke="url(#appLogoGrad)" stroke-width="3"/>
+                <circle cx="60" cy="60" r="12" fill="#3fb950" filter="url(#appGlow)"/>
                 <path d="M60 42 L60 35" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
                 <path d="M60 78 L60 85" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
                 <path d="M42 60 L35 60" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>

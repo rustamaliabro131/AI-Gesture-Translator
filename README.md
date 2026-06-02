@@ -237,6 +237,28 @@ railway up
 6. Push: `git push origin feature-name`
 7. Open a Pull Request
 
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rustamaliabro131"><img src="https://avatars.githubusercontent.com/u/143821884?v=4" width="60px;" alt="Rustam Ali"/><br /><sub><b>Rustam Ali</b></sub></a><br /><a href="https://github.com/rustamaliabro131/AI-Gesture-Translator/commits?author=rustamaliabro131" title="Code">💻</a> <a href="https://github.com/rustamaliabro131/AI-Gesture-Translator/commits?author=rustamaliabro131" title="Documentation">📖</a> <a href="#ideas-rustamaliabro131" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification.
+Contributions of any kind welcome!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
