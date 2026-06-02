@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Gesture Translator</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,32 +35,20 @@
 
     <main class="main-container">
         <div class="app-logo-section">
-            <svg class="app-logo" viewBox="0 0 120 120" fill="none">
-                <defs>
-                    <linearGradient id="appLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#58a6ff"/>
-                        <stop offset="100%" style="stop-color:#3fb950"/>
-                    </linearGradient>
-                    <filter id="appGlow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-                <circle cx="60" cy="60" r="55" stroke="url(#appLogoGrad)" stroke-width="4" filter="url(#appGlow)"/>
+            <svg class="app-logo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" stroke="#58a6ff" stroke-width="4"/>
                 <circle cx="60" cy="60" r="45" stroke="#58a6ff" stroke-width="2" stroke-dasharray="8 4"/>
-                <path d="M35 60 Q60 35 85 60 Q60 85 35 60" fill="none" stroke="url(#appLogoGrad)" stroke-width="3"/>
-                <circle cx="60" cy="60" r="12" fill="#3fb950" filter="url(#appGlow)"/>
-                <path d="M60 42 L60 35" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
-                <path d="M60 78 L60 85" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
-                <path d="M42 60 L35 60" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
-                <path d="M78 60 L85 60" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
-                <path d="M47 47 L42 42" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
-                <path d="M73 47 L78 42" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
-                <path d="M47 73 L42 78" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
-                <path d="M73 73 L78 78" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
+                <path d="M35 60 Q60 35 85 60 Q60 85 35 60" stroke="#58a6ff" stroke-width="3" fill="none"/>
+                <path d="M35 60 Q60 35 85 60 Q60 85 35 60" stroke="#3fb950" stroke-width="1.5" fill="none" transform="scale(0.7) translate(25, 25)"/>
+                <circle cx="60" cy="60" r="12" fill="#3fb950"/>
+                <line x1="60" y1="42" x2="60" y2="35" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
+                <line x1="60" y1="78" x2="60" y2="85" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
+                <line x1="42" y1="60" x2="35" y2="60" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
+                <line x1="78" y1="60" x2="85" y2="60" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
+                <line x1="47" y1="47" x2="42" y2="42" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
+                <line x1="73" y1="47" x2="78" y2="42" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
+                <line x1="47" y1="73" x2="42" y2="78" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
+                <line x1="73" y1="73" x2="78" y2="78" stroke="#3fb950" stroke-width="2" stroke-linecap="round"/>
             </svg>
             <h2 class="app-logo-title">AI Gesture Translator</h2>
             <p class="app-logo-tagline">Breaking Language Barriers with AI</p>
